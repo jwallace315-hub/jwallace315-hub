@@ -88,7 +88,7 @@ html {
 
 <!-- ================== NAVBAR ================== -->
 <div class="navbar">
-  GurNFriends
+  GUR n’ Friends
   <span style="float:right; font-weight:400;">
     <a href="#what-we-do" style="color:white; margin:0 10px; text-decoration:none;">What We Do</a>
     <a href="#process" style="color:white; margin:0 10px; text-decoration:none;">Process</a>
