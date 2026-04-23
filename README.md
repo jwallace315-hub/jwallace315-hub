@@ -92,7 +92,7 @@ html {
   <span style="float:right; font-weight:400;">
     <a href="#what-we-do" style="color:white; margin:0 10px; text-decoration:none;">What We Do</a>
     <a href="#studies" style="color:white; margin:0 10px; text-decoration:none;">Studies</a>
-    <a href="#pricing" style="color:white; margin:0 10px; text-decoration:none;">Pricing</a>
+    <a href="#cost" style="color:white; margin:0 10px; text-decoration:none;">Cost</a>
     <a href="#process" style="color:white; margin:0 10px; text-decoration:none;">Process</a>
     <a href="#contact" style="color:white; margin:0 10px; text-decoration:none;">Contact</a>
   </span>
@@ -122,9 +122,9 @@ html {
   </div>
 </div>
 
-<!-- ================== PRICING ================== -->
-<div class="section" id="pricing">
-  <h2>Pricing</h2>
+<!-- ================== Cost ================== -->
+<div class="section" id="cost">
+  <h2>Average Cost</h2>
   <div class="box split-2">
     <div>
       <h3>Basic Package</h3>
