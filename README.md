@@ -1,8 +1,10 @@
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+
 <!-- ================== STYLES ================== -->
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Jost', Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
