@@ -9,7 +9,7 @@ header, .markdown-body > h1:first-child {
   
 body {
   margin: 0;
-  font-family: 'Jost', Arial, sans-serif;
+  font-family: 'Jost', Verdana, sans-serif;
   scroll-behavior: smooth;
   background-color: #fffdf7
 }
