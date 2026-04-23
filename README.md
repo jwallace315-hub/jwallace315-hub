@@ -35,7 +35,8 @@ body {
 
 /* Content boxes */
 .box {
-  background-color: #ffffff;
+  background-color: #dcdcd8;
+  border: 1px solid #d6d6d2;
   padding: 20px;
   border-radius: 8px;
 }
