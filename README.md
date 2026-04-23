@@ -125,14 +125,21 @@ html {
 <!-- ================== Cost ================== -->
 <div class="section" id="cost">
   <h2>Average Cost</h2>
+  <p style="text-align:center; margin-bottom:15px; font-size:14px; color:#555;">
+      Variable pricing → Depends on the type of game and stage of development! 
+  </p>
   <div class="box split-2">
     <div>
-      <h3>Basic Package</h3>
-      <p>Ideal for small teams looking for quick usability feedback.</p>
+      <h3>Insert</h3>
+      <p>
+        For smaller usability reviews for single player indie games, we could target 3-5 participants, 
+        but for larger scale projects/later stages that number could be 10-20 or 50+, 
+        but a lot of it depends on where your game is at and what your team needs are prior to testing. 
+      </p>
     </div>
     <div>
-      <h3>Full Research Package</h3>
-      <p>Comprehensive testing, reporting, and deep player insights.</p>
+      <h3>Insert</h3>
+      <p>$10 per participant x # of Participants</p>
     </div>
   </div>
 </div>
