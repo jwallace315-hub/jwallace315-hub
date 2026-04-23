@@ -122,6 +122,21 @@ html {
   </div>
 </div>
 
+<!-- ================== PRICING ================== -->
+<div class="section" id="pricing">
+  <h2>Pricing</h2>
+  <div class="box split-2">
+    <div>
+      <h3>Basic Package</h3>
+      <p>Ideal for small teams looking for quick usability feedback.</p>
+    </div>
+    <div>
+      <h3>Full Research Package</h3>
+      <p>Comprehensive testing, reporting, and deep player insights.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ================== GUR PROCESS ================== -->
 <div class="section" id="process">
   <h2>The GUR process</h2>
@@ -137,21 +152,6 @@ html {
     <div>
       <h3>Step 3</h3>
       <p>We analyze results and deliver clear, actionable insights.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ================== PRICING ================== -->
-<div class="section" id="pricing">
-  <h2>Pricing</h2>
-  <div class="box split-2">
-    <div>
-      <h3>Basic Package</h3>
-      <p>Ideal for small teams looking for quick usability feedback.</p>
-    </div>
-    <div>
-      <h3>Full Research Package</h3>
-      <p>Comprehensive testing, reporting, and deep player insights.</p>
     </div>
   </div>
 </div>
