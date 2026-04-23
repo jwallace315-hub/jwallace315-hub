@@ -112,6 +112,16 @@ html {
   </div>
 </div>
 
+<!-- ================== Studies Run ================== -->
+<div class="section" id="studies">
+  <h2>Studies Run</h2>
+  <div class="box">
+    <p>
+      24+ studies (add in whatever you have for Dinos/other projects that we didn't do together)
+    </p>
+  </div>
+</div>
+
 <!-- ================== GUR PROCESS ================== -->
 <div class="section" id="process">
   <h2>The GUR process</h2>
