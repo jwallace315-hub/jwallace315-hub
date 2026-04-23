@@ -71,9 +71,11 @@ body {
   <h2>What it is we do</h2>
   <div class="box">
     <p>
-      We provide professional game user research services designed to help developers
-      understand player behavior, improve usability, and create better player experiences.
-      Our insights turn player feedback into actionable design improvements.
+      We run playtests with participants in your target audience to help you make your intended experience. 
+      Instead of having to make adjustments to your design and codebase later down the line, costing you your time and money, 
+      we can highlight those issues before it requires much earlier before it requires significant changes. 
+      /n
+      Depending on your needs we can address anything from basic usability fixes to granular user experience tweaks to specific mechanics.
     </p>
   </div>
 </div>
