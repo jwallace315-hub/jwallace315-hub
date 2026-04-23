@@ -6,19 +6,6 @@
 header, .markdown-body > h1:first-child {
   display: none;
 }
-
-/* Removes anchor links */
-.anchorjs-link,
-.octicon-link,
-a.anchor {
-  display: none !important;
-}
-
-.markdown-body h1 a,
-.markdown-body h2 a,
-.markdown-body h3 a {
-  display: none !important;
-}
   
 body {
   margin: 0;
@@ -81,6 +68,18 @@ body {
   font-size: 18px;
 }
 
+/* Removes anchor links */
+.anchorjs-link,
+.octicon-link,
+a.anchor {
+  display: none !important;
+}
+.markdown-body h1 a,
+.markdown-body h2 a,
+.markdown-body h3 a {
+  display: none !important;
+}
+  
 /* Add smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -91,7 +90,7 @@ html {
 <div class="navbar">
   GurNFriends
   <span style="float:right; font-weight:400;">
-    <a href="#what-we-do" style="color:white; margin:0 10px; text-decoration:none;">What We Do</a>
+    <a href="#what-we-do" style="color:white; margin:0 10px; text-decoration:none;">What it is we do</a>
     <a href="#process" style="color:white; margin:0 10px; text-decoration:none;">Process</a>
     <a href="#pricing" style="color:white; margin:0 10px; text-decoration:none;">Pricing</a>
     <a href="#contact" style="color:white; margin:0 10px; text-decoration:none;">Contact</a>
