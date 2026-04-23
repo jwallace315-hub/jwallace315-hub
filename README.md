@@ -24,6 +24,9 @@ body {
   font-size: 20px;
   font-weight: bold;
   z-index: 1000;
+
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 
 /* Section layout */
