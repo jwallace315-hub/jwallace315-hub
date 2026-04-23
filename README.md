@@ -91,8 +91,9 @@ html {
   GUR n’ Friends
   <span style="float:right; font-weight:400;">
     <a href="#what-we-do" style="color:white; margin:0 10px; text-decoration:none;">What We Do</a>
-    <a href="#process" style="color:white; margin:0 10px; text-decoration:none;">Process</a>
+    <a href="#studies" style="color:white; margin:0 10px; text-decoration:none;">Studies</a>
     <a href="#pricing" style="color:white; margin:0 10px; text-decoration:none;">Pricing</a>
+    <a href="#process" style="color:white; margin:0 10px; text-decoration:none;">Process</a>
     <a href="#contact" style="color:white; margin:0 10px; text-decoration:none;">Contact</a>
   </span>
 </div>
