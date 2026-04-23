@@ -2,6 +2,11 @@
 
 <!-- ================== STYLES ================== -->
 <style>
+/* Remove repo name */
+header, .markdown-body > h1:first-child {
+  display: none;
+}
+  
 body {
   margin: 0;
   font-family: 'Jost', Arial, sans-serif;
