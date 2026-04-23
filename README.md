@@ -6,6 +6,19 @@
 header, .markdown-body > h1:first-child {
   display: none;
 }
+
+/* Removes anchor links */
+.anchorjs-link,
+.octicon-link,
+a.anchor {
+  display: none !important;
+}
+
+.markdown-body h1 a,
+.markdown-body h2 a,
+.markdown-body h3 a {
+  display: none !important;
+}
   
 body {
   margin: 0;
@@ -67,15 +80,26 @@ body {
   text-align: center;
   font-size: 18px;
 }
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
 </style>
 
 <!-- ================== NAVBAR ================== -->
 <div class="navbar">
   GurNFriends
+  <span style="float:right; font-weight:400;">
+    <a href="#what-we-do" style="color:white; margin:0 10px; text-decoration:none;">What We Do</a>
+    <a href="#process" style="color:white; margin:0 10px; text-decoration:none;">Process</a>
+    <a href="#pricing" style="color:white; margin:0 10px; text-decoration:none;">Pricing</a>
+    <a href="#contact" style="color:white; margin:0 10px; text-decoration:none;">Contact</a>
+  </span>
 </div>
 
 <!-- ================== WHAT WE DO ================== -->
-<div class="section">
+<div class="section" id="what-we-do">
   <h2>What it is we do</h2>
   <div class="box">
     <p>
@@ -89,7 +113,7 @@ body {
 </div>
 
 <!-- ================== GUR PROCESS ================== -->
-<div class="section">
+<div class="section" id="process">
   <h2>The GUR process</h2>
   <div class="box split-3">
     <div>
@@ -108,7 +132,7 @@ body {
 </div>
 
 <!-- ================== PRICING ================== -->
-<div class="section">
+<div class="section" id="pricing">
   <h2>Pricing</h2>
   <div class="box split-2">
     <div>
@@ -123,7 +147,7 @@ body {
 </div>
 
 <!-- ================== CONTACT ================== -->
-<div class="section contact">
+<div class="section" id="contact">
   <h2>Contact</h2>
   <div class="box">
     <p>Email: your@email.com</p>
