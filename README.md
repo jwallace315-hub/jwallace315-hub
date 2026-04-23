@@ -45,7 +45,7 @@ body {
 .box {
   background-color: #e9e9e6;
   border: 1px solid #d6d6d2;
-  padding: 20px;
+  padding: 5px;
   border-radius: 8px;
 }
 
