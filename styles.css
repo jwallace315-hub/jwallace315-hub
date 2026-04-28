@@ -45,7 +45,7 @@ body {
 .nav-links a.active {
   text-decoration: underline;
   font-weight: 600;
-  color: #ffd166;
+  color: red !important;
 }
 
 /* MOBILE NAV */
