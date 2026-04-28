@@ -14,36 +14,6 @@
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-
-<script>
-console.log("scroll script loaded");
-
-const sections = document.querySelectorAll(".section");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-function setActiveLink() {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-
-    if (window.scrollY >= sectionTop - sectionHeight / 3) {
-      current = section.id;
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", setActiveLink);
-window.addEventListener("load", setActiveLink);
-</script>
   
 <body>
 
@@ -145,6 +115,36 @@ window.addEventListener("load", setActiveLink);
 </section>
 
 </main>
+
+<script>
+console.log("scroll script loaded");
+
+const sections = document.querySelectorAll(".section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+function setActiveLink() {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+
+    if (window.scrollY >= sectionTop - sectionHeight / 3) {
+      current = section.id;
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", setActiveLink);
+window.addEventListener("load", setActiveLink);
+</script>
 
 </body>
 </html>
