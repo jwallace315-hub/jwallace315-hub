@@ -1,3 +1,4 @@
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
 
 <!-- ================== STYLES ================== -->
