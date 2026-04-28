@@ -16,19 +16,20 @@
 </head>
 
 <script>
-console.log("scroll script loaded!");
+console.log("scroll script loaded");
+
 const sections = document.querySelectorAll(".section");
 const navLinks = document.querySelectorAll(".nav-links a");
 
-window.addEventListener("scroll", () => {
+function setActiveLink() {
   let current = "";
 
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
+    const sectionHeight = section.offsetHeight;
 
-    if (pageYOffset >= sectionTop - sectionHeight / 3) {
-      current = section.getAttribute("id");
+    if (window.scrollY >= sectionTop - sectionHeight / 3) {
+      current = section.id;
     }
   });
 
@@ -38,7 +39,10 @@ window.addEventListener("scroll", () => {
       link.classList.add("active");
     }
   });
-});
+}
+
+window.addEventListener("scroll", setActiveLink);
+window.addEventListener("load", setActiveLink);
 </script>
   
 <body>
