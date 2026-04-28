@@ -94,9 +94,9 @@ body {
 
 .carousel-item img {
   width: 100%;
-  height: 180px;
+  height: 260px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .item-title {
