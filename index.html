@@ -132,67 +132,40 @@
 </main>
 
 <script>
-const sections = document.querySelectorAll(".section");
-const links = document.querySelectorAll(".nav-link");
-const indicator = document.getElementById("navIndicator");
-
-function moveIndicator(el) {
-  const rect = el.getBoundingClientRect();
-  const parentRect = el.parentElement.getBoundingClientRect();
-  indicator.style.width = rect.width + "px";
-  indicator.style.transform = `translateX(${rect.left - parentRect.left}px)`;
-}
-
-function setActive(id) {
-  links.forEach(l => l.classList.remove("active"));
-  const active = document.querySelector(`.nav-link[href="#${id}"]`);
-  if (active) {
-    active.classList.add("active");
-    moveIndicator(active);
-  }
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) setActive(entry.target.id);
-  });
-}, { threshold: 0.6 });
-
-sections.forEach(s => observer.observe(s));
-
-links.forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute("href"));
-    target.scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-// ================= CAROUSEL =================
 const track = document.getElementById("carouselTrack");
+const items = document.querySelectorAll(".carousel-item");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
 let index = 0;
 const visible = 3;
-const items = document.querySelectorAll(".carousel-item");
+
+function getItemWidth() {
+  return items[0].getBoundingClientRect().width;
+}
 
 function updateCarousel() {
-  const itemWidth = items[0].offsetWidth;
+  const itemWidth = getItemWidth();
   track.style.transform = `translateX(${-index * itemWidth}px)`;
 }
 
 nextBtn.addEventListener("click", () => {
-  if (index < items.length - visible) index++;
-  updateCarousel();
+  const maxIndex = items.length - visible;
+  if (index < maxIndex) {
+    index++;
+    updateCarousel();
+  }
 });
 
 prevBtn.addEventListener("click", () => {
-  if (index > 0) index--;
-  updateCarousel();
+  if (index > 0) {
+    index--;
+    updateCarousel();
+  }
 });
 
 window.addEventListener("resize", updateCarousel);
+window.addEventListener("load", updateCarousel);
 </script>
 
 </body>
