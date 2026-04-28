@@ -91,13 +91,15 @@ body {
   min-width: 40%;
   padding: 15px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .carousel-item img {
   width: 100%;
   height: 260px;
   object-fit: cover;
-  border-radius: 10px;
+  display: block;
 }
 
 .item-title {
