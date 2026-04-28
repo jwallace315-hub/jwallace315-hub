@@ -75,6 +75,7 @@ body {
   padding: 0 10px;
   display: flex;
   align-items: center;
+  align-items: stretch;
 }
 
 .carousel-viewport {
