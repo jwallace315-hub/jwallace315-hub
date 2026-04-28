@@ -52,41 +52,12 @@
     <div class="carousel-viewport">
       <div class="carousel-track" id="carouselTrack">
 
-        <div class="carousel-item">
-          <img src="assets/studies/filler image.png" />
-          <p class="item-title">Study A</p>
-          <p class="item-sub">This shit crazy</p>
-        </div>
-
-        <div class="carousel-item">
-          <img src="assets/studies/filler image.png" />
-          <p class="item-title">Study B</p>
-          <p class="item-sub">On god?</p>
-        </div>
-
-        <div class="carousel-item">
-          <img src="assets/studies/dinos_cover-art.png" />
-          <p class="item-title">Dinos TD</p>
-          <p class="item-sub">A tricera-what!?</p>
-        </div>
-
-        <div class="carousel-item">
-          <img src="assets/studies/filler image.png" />
-          <p class="item-title">Study D</p>
-          <p class="item-sub">Bruh</p>
-        </div>
-
-        <div class="carousel-item">
-          <img src="assets/studies/filler image.png" />
-          <p class="item-title">Study E</p>
-          <p class="item-sub">Difficulty balancing</p>
-        </div>
-
-        <div class="carousel-item">
-         <img src="assets/studies/filler image.png" />
-          <p class="item-title">Study F</p>
-          <p class="item-sub">Player retention analysis</p>
-        </div>
+        <div class="carousel-item"><img src="https://via.placeholder.com/800x450"><p class="item-title">Study Alpha</p><p class="item-sub">UX onboarding test</p></div>
+        <div class="carousel-item"><img src="https://via.placeholder.com/800x450"><p class="item-title">Study Beta</p><p class="item-sub">Combat flow analysis</p></div>
+        <div class="carousel-item"><img src="https://via.placeholder.com/800x450"><p class="item-title">Study Gamma</p><p class="item-sub">Tutorial clarity review</p></div>
+        <div class="carousel-item"><img src="https://via.placeholder.com/800x450"><p class="item-title">Study Delta</p><p class="item-sub">UI readability testing</p></div>
+        <div class="carousel-item"><img src="https://via.placeholder.com/800x450"><p class="item-title">Study Epsilon</p><p class="item-sub">Difficulty balancing</p></div>
+        <div class="carousel-item"><img src="https://via.placeholder.com/800x450"><p class="item-title">Study Zeta</p><p class="item-sub">Player retention analysis</p></div>
 
       </div>
     </div>
@@ -100,24 +71,17 @@
   <p class="subtext">Variable pricing depending on game type and stage of development.</p>
 
   <div class="grid-2">
-    <div class="box">
-      <h3>Study Scope</h3>
-      <p>3–5 participants for small tests. 10–50+ for larger studies depending on scope.</p>
-    </div>
-
-    <div class="box">
-      <h3>Pricing Model</h3>
-      <p>$10 per participant × number of participants</p>
-    </div>
+    <div class="box"><h3>Study Scope</h3><p>3–5 participants small tests, up to 50+ for large studies.</p></div>
+    <div class="box"><h3>Pricing Model</h3><p>$10 per participant × number of participants</p></div>
   </div>
 </section>
 
 <section class="section" id="process">
   <h2>The GUR Process</h2>
   <div class="grid-3">
-    <div class="box"><h3>Step 1</h3><p>Define research goals and target players.</p></div>
-    <div class="box"><h3>Step 2</h3><p>Conduct structured playtests and collect behavioral data.</p></div>
-    <div class="box"><h3>Step 3</h3><p>Analyze results and deliver actionable insights.</p></div>
+    <div class="box"><h3>Step 1</h3><p>Define research goals.</p></div>
+    <div class="box"><h3>Step 2</h3><p>Conduct playtests and collect data.</p></div>
+    <div class="box"><h3>Step 3</h3><p>Deliver actionable insights.</p></div>
   </div>
 </section>
 
@@ -132,58 +96,92 @@
 </main>
 
 <script>
+// ================= NAV =================
+const sections = document.querySelectorAll(".section");
+const links = document.querySelectorAll(".nav-link");
+const indicator = document.getElementById("navIndicator");
+
+function moveIndicator(el){
+  const r = el.getBoundingClientRect();
+  const pr = el.parentElement.getBoundingClientRect();
+  indicator.style.width = r.width + "px";
+  indicator.style.transform = `translateX(${r.left - pr.left}px)`;
+}
+
+function setActive(id){
+  links.forEach(l=>l.classList.remove("active"));
+  const a = document.querySelector(`.nav-link[href="#${id}"]`);
+  if(a){ a.classList.add("active"); moveIndicator(a); }
+}
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) setActive(e.target.id); });
+},{threshold:0.6});
+
+sections.forEach(s=>observer.observe(s));
+
+links.forEach(link=>{
+  link.addEventListener("click",e=>{
+    e.preventDefault();
+    document.querySelector(link.getAttribute("href"))
+      .scrollIntoView({behavior:"smooth"});
+  });
+});
+
+// ================= INFINITE CAROUSEL =================
 const track = document.getElementById("carouselTrack");
-const items = document.querySelectorAll(".carousel-item");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
-let index = 0;
+let items = Array.from(document.querySelectorAll(".carousel-item"));
 const visible = 3;
 
-function getItemWidth() {
+// clone for seamless loop
+for(let i=0;i<visible;i++){
+  const firstClone = items[i].cloneNode(true);
+  const lastClone = items[items.length-1-i].cloneNode(true);
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, track.firstChild);
+}
+
+items = Array.from(document.querySelectorAll(".carousel-item"));
+let index = visible;
+
+function getWidth(){
   return items[0].getBoundingClientRect().width;
 }
 
-function updateCarousel() {
-  const itemWidth = getItemWidth();
-  track.style.transform = `translateX(${-index * itemWidth}px)`;
+function update(animate=true){
+  track.style.transition = animate ? "transform 0.4s ease" : "none";
+  track.style.transform = `translateX(${-index * getWidth()}px)`;
 }
 
-function next() {
+nextBtn.addEventListener("click",()=>{
   index++;
-  if (index > items.length - visible) {
-    index = 0; // 🔥 loop back to start
-  }
-  updateCarousel();
-}
+  update();
+});
 
-function prev() {
+prevBtn.addEventListener("click",()=>{
   index--;
-  if (index < 0) {
-    index = items.length - visible; // 🔁 jump to end
+  update();
+});
+
+track.addEventListener("transitionend",()=>{
+  const total = items.length;
+
+  if(index >= total - visible){
+    index = visible;
+    update(false);
   }
-  updateCarousel();
-}
 
-nextBtn.addEventListener("click", next);
-prevBtn.addEventListener("click", prev);
-
-window.addEventListener("resize", updateCarousel);
-window.addEventListener("load", updateCarousel);
-
-setInterval(() => {
-  next();
-}, 4000);
-
-let interval = setInterval(next, 4000);
-
-track.addEventListener("mouseenter", () => {
-  clearInterval(interval);
+  if(index < visible){
+    index = total - visible - 1;
+    update(false);
+  }
 });
 
-track.addEventListener("mouseleave", () => {
-  interval = setInterval(next, 4000);
-});
+window.addEventListener("resize",()=>update(false));
+window.addEventListener("load",()=>update(false));
 </script>
 
 </body>
