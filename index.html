@@ -1,3 +1,6 @@
+<!-- =========================
+FILE: index.html
+========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-  
+
 <body>
 
 <!-- ================== NAVBAR ================== -->
@@ -25,34 +28,28 @@
     <input type="checkbox" id="nav-toggle" class="nav-toggle" />
     <label for="nav-toggle" class="nav-toggle-label">☰</label>
 
-    <nav class="nav-links">
-      <a href="#what-we-do">What We Do</a>
-      <a href="#studies">Studies</a>
-      <a href="#cost">Cost</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav-links" id="navLinks">
+      <span class="nav-indicator" id="navIndicator"></span>
+      <a href="#what-we-do" class="nav-link">What We Do</a>
+      <a href="#studies" class="nav-link">Studies</a>
+      <a href="#cost" class="nav-link">Cost</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- WHAT WE DO -->
 <section class="section" id="what-we-do">
   <h2>What it is we do</h2>
   <div class="box">
-    <p>
-      We run playtests with participants in your target audience to help you improve your intended experience.
-      Instead of making costly adjustments later in development, we identify issues early.
-    </p>
+    <p>We run playtests with participants in your target audience to improve your experience early in development.</p>
     <hr />
-    <p>
-      We can address anything from usability fixes to granular UX tweaks to specific mechanics.
-    </p>
+    <p>We identify usability issues, UX problems, and mechanic friction points before they become expensive to fix.</p>
   </div>
 </section>
 
-<!-- STUDIES -->
 <section class="section" id="studies">
   <h2>Studies Run</h2>
   <div class="box">
@@ -60,20 +57,14 @@
   </div>
 </section>
 
-<!-- COST -->
 <section class="section" id="cost">
   <h2>Average Cost</h2>
-  <p class="subtext">
-    Variable pricing depending on game type and stage of development.
-  </p>
+  <p class="subtext">Variable pricing depending on game type and stage of development.</p>
 
   <div class="grid-2">
     <div class="box">
       <h3>Study Scope</h3>
-      <p>
-        Small indie usability reviews: 3–5 participants.
-        Larger projects: 10–20 or 50+ depending on needs.
-      </p>
+      <p>3–5 participants for small tests. 10–50+ for larger studies depending on scope.</p>
     </div>
 
     <div class="box">
@@ -83,21 +74,18 @@
   </div>
 </section>
 
-<!-- PROCESS -->
 <section class="section" id="process">
   <h2>The GUR Process</h2>
 
   <div class="grid-3">
     <div class="box">
       <h3>Step 1</h3>
-      <p>Define research goals and identify target players.</p>
+      <p>Define research goals and target players.</p>
     </div>
-
     <div class="box">
       <h3>Step 2</h3>
       <p>Conduct structured playtests and collect behavioral data.</p>
     </div>
-
     <div class="box">
       <h3>Step 3</h3>
       <p>Analyze results and deliver actionable insights.</p>
@@ -105,7 +93,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
   <h2>Contact</h2>
   <div class="box">
@@ -117,48 +104,49 @@
 </main>
 
 <script>
-console.log("scroll script loaded");
-
 const sections = document.querySelectorAll(".section");
-const navLinks = document.querySelectorAll(".nav-links a");
+const links = document.querySelectorAll(".nav-link");
+const indicator = document.getElementById("navIndicator");
 
-function setActiveLink() {
-  let current = "";
+function moveIndicator(el) {
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const parentRect = el.parentElement.getBoundingClientRect();
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-
-    if (window.scrollY >= sectionTop - sectionHeight / 3) {
-      current = section.id;
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
+  indicator.style.width = rect.width + "px";
+  indicator.style.transform = `translateX(${rect.left - parentRect.left}px)`;
 }
 
-window.addEventListener("scroll", setActiveLink);
-window.addEventListener("load", setActiveLink);
-</script>
+function setActive(id) {
+  links.forEach(l => l.classList.remove("active"));
+  const active = document.querySelector(`.nav-link[href="#${id}"]`);
+  if (active) {
+    active.classList.add("active");
+    moveIndicator(active);
+  }
+}
 
-<script>
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const targetId = this.getAttribute('href').substring(1);
-    const target = document.getElementById(targetId);
-
-    target.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setActive(entry.target.id);
+    }
   });
+}, { threshold: 0.6 });
+
+sections.forEach(section => observer.observe(section));
+
+links.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
+
+window.addEventListener("load", () => {
+  const first = document.querySelector(".nav-link");
+  if (first) moveIndicator(first);
 });
 </script>
 
