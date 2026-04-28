@@ -5,19 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GUR n’ Friends</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-<!-- ================== NAVBAR ================== -->
 <header class="navbar">
   <div class="nav-container">
     <div class="logo">GUR n’ Friends</div>
@@ -47,10 +41,57 @@
   </div>
 </section>
 
+<!-- ================== STUDIES ================== -->
 <section class="section" id="studies">
   <h2>Studies Run</h2>
-  <div class="box">
-    <p>24+ studies completed across multiple projects.</p>
+  <p class="subtext">24+ studies completed across multiple projects!</p>
+
+  <div class="carousel-wrapper">
+    <button class="carousel-btn left" id="prevBtn">&#10094;</button>
+
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/300x180" />
+          <p class="item-title">Study Alpha</p>
+          <p class="item-sub">UX onboarding test</p>
+        </div>
+
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/300x180" />
+          <p class="item-title">Study Beta</p>
+          <p class="item-sub">Combat flow analysis</p>
+        </div>
+
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/300x180" />
+          <p class="item-title">Study Gamma</p>
+          <p class="item-sub">Tutorial clarity review</p>
+        </div>
+
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/300x180" />
+          <p class="item-title">Study Delta</p>
+          <p class="item-sub">UI readability testing</p>
+        </div>
+
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/300x180" />
+          <p class="item-title">Study Epsilon</p>
+          <p class="item-sub">Difficulty balancing</p>
+        </div>
+
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/300x180" />
+          <p class="item-title">Study Zeta</p>
+          <p class="item-sub">Player retention analysis</p>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="carousel-btn right" id="nextBtn">&#10095;</button>
   </div>
 </section>
 
@@ -73,20 +114,10 @@
 
 <section class="section" id="process">
   <h2>The GUR Process</h2>
-
   <div class="grid-3">
-    <div class="box">
-      <h3>Step 1</h3>
-      <p>Define research goals and target players.</p>
-    </div>
-    <div class="box">
-      <h3>Step 2</h3>
-      <p>Conduct structured playtests and collect behavioral data.</p>
-    </div>
-    <div class="box">
-      <h3>Step 3</h3>
-      <p>Analyze results and deliver actionable insights.</p>
-    </div>
+    <div class="box"><h3>Step 1</h3><p>Define research goals and target players.</p></div>
+    <div class="box"><h3>Step 2</h3><p>Conduct structured playtests and collect behavioral data.</p></div>
+    <div class="box"><h3>Step 3</h3><p>Analyze results and deliver actionable insights.</p></div>
   </div>
 </section>
 
@@ -106,10 +137,8 @@ const links = document.querySelectorAll(".nav-link");
 const indicator = document.getElementById("navIndicator");
 
 function moveIndicator(el) {
-  if (!el) return;
   const rect = el.getBoundingClientRect();
   const parentRect = el.parentElement.getBoundingClientRect();
-
   indicator.style.width = rect.width + "px";
   indicator.style.transform = `translateX(${rect.left - parentRect.left}px)`;
 }
@@ -123,28 +152,47 @@ function setActive(id) {
   }
 }
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      setActive(entry.target.id);
-    }
+    if (entry.isIntersecting) setActive(entry.target.id);
   });
 }, { threshold: 0.6 });
 
-sections.forEach(section => observer.observe(section));
+sections.forEach(s => observer.observe(s));
 
 links.forEach(link => {
-  link.addEventListener("click", (e) => {
+  link.addEventListener("click", e => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute("href"));
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    target.scrollIntoView({ behavior: "smooth" });
   });
 });
 
-window.addEventListener("load", () => {
-  const first = document.querySelector(".nav-link");
-  if (first) moveIndicator(first);
+// ================= CAROUSEL =================
+const track = document.getElementById("carouselTrack");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+let index = 0;
+const visible = 3;
+const items = document.querySelectorAll(".carousel-item");
+
+function updateCarousel() {
+  const itemWidth = items[0].offsetWidth;
+  track.style.transform = `translateX(${-index * itemWidth}px)`;
+}
+
+nextBtn.addEventListener("click", () => {
+  if (index < items.length - visible) index++;
+  updateCarousel();
 });
+
+prevBtn.addEventListener("click", () => {
+  if (index > 0) index--;
+  updateCarousel();
+});
+
+window.addEventListener("resize", updateCarousel);
 </script>
 
 </body>
