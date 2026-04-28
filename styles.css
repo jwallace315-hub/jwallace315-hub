@@ -87,8 +87,8 @@ body {
 }
 
 .carousel-item {
-  min-width: 33.333%;
-  padding: 10px;
+  min-width: 40%;
+  padding: 15px;
   text-align: center;
 }
 
