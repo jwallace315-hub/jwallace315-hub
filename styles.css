@@ -32,17 +32,29 @@ body{
   transition:.3s;
 }
 
-.section{max-width:900px;margin:auto;padding:80px 20px}
+/* ================= LAYOUT WIDTH UPGRADE ================= */
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+#studies{
+  max-width:1400px;
+}
+
 .subtext{text-align:center;color:#555}
 .box{background:#e9e9e6;padding:20px;border-radius:8px}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 
+/* ================= CAROUSEL ================= */
 .carousel-wrapper{
   position:relative;
   display:flex;
   align-items:center;
   margin-top:30px;
+  width:100%;
 }
 
 .carousel-viewport{overflow:hidden;width:100%}

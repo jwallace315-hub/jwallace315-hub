@@ -136,12 +136,9 @@ const nextBtn = document.getElementById("nextBtn");
 let items = Array.from(document.querySelectorAll(".carousel-item"));
 const visible = 3;
 
-// clone for seamless loop
 for(let i=0;i<visible;i++){
-  const firstClone = items[i].cloneNode(true);
-  const lastClone = items[items.length-1-i].cloneNode(true);
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, track.firstChild);
+  track.appendChild(items[i].cloneNode(true));
+  track.insertBefore(items[items.length-1-i].cloneNode(true), track.firstChild);
 }
 
 items = Array.from(document.querySelectorAll(".carousel-item"));
@@ -156,28 +153,13 @@ function update(animate=true){
   track.style.transform = `translateX(${-index * getWidth()}px)`;
 }
 
-nextBtn.addEventListener("click",()=>{
-  index++;
-  update();
-});
-
-prevBtn.addEventListener("click",()=>{
-  index--;
-  update();
-});
+nextBtn.addEventListener("click",()=>{ index++; update(); });
+prevBtn.addEventListener("click",()=>{ index--; update(); });
 
 track.addEventListener("transitionend",()=>{
   const total = items.length;
-
-  if(index >= total - visible){
-    index = visible;
-    update(false);
-  }
-
-  if(index < visible){
-    index = total - visible - 1;
-    update(false);
-  }
+  if(index >= total - visible){ index = visible; update(false); }
+  if(index < visible){ index = total - visible - 1; update(false); }
 });
 
 window.addEventListener("resize",()=>update(false));
