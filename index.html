@@ -149,23 +149,41 @@ function updateCarousel() {
   track.style.transform = `translateX(${-index * itemWidth}px)`;
 }
 
-nextBtn.addEventListener("click", () => {
-  const maxIndex = items.length - visible;
-  if (index < maxIndex) {
-    index++;
-    updateCarousel();
+function next() {
+  index++;
+  if (index > items.length - visible) {
+    index = 0; // 🔥 loop back to start
   }
-});
+  updateCarousel();
+}
 
-prevBtn.addEventListener("click", () => {
-  if (index > 0) {
-    index--;
-    updateCarousel();
+function prev() {
+  index--;
+  if (index < 0) {
+    index = items.length - visible; // 🔁 jump to end
   }
-});
+  updateCarousel();
+}
+
+nextBtn.addEventListener("click", next);
+prevBtn.addEventListener("click", prev);
 
 window.addEventListener("resize", updateCarousel);
 window.addEventListener("load", updateCarousel);
+
+setInterval(() => {
+  next();
+}, 4000);
+
+let interval = setInterval(next, 4000);
+
+track.addEventListener("mouseenter", () => {
+  clearInterval(interval);
+});
+
+track.addEventListener("mouseleave", () => {
+  interval = setInterval(next, 4000);
+});
 </script>
 
 </body>
